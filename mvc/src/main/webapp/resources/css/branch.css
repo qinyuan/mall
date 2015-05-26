@@ -1,0 +1,50 @@
+div.content {
+    margin-top: 30px;
+}
+
+div.content div.branchGroup {
+    margin: 40px 0;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 106%;
+}
+
+div.content div.branchGroup > div.title {
+    font-size: 45pt;
+    font-family: Time New Romain;
+}
+
+div.content div.branchGroup > div.title > span {
+    border-bottom: #f10180 2px solid;
+}
+
+div.content div.branchGroup div.branch {
+    padding: 18px 60px 18px 0;
+    float: left;
+    text-align: center;
+}
+
+div.content div.branchGroup div.branch a {
+    font-size: 9pt;
+    color: #383838;
+}
+
+div.loading {
+    text-align: center;
+}
+
+div.rightFloat {
+    top: 150px;
+    width: 110px;
+}
+
+div.rightFloat div {
+    padding: 5px 4px;
+    float: left;
+}
+
+div.rightFloat div a {
+    background-color: #ffffff;
+    padding: 4px 6px;
+}

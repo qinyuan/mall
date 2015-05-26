@@ -1,0 +1,51 @@
+div.content table {
+    margin-bottom: 30px;
+}
+
+div.content table col.url {
+    width: 120px;
+}
+
+div.content table col.word {
+    width: 340px;
+}
+
+div.content table col.description {
+    width: 340px;
+}
+
+div.content table col.action {
+    width: 50px;
+}
+
+div.content table input {
+    width: 380px;
+}
+
+div.content form div {
+    padding: 20px;
+}
+
+div.content form div.url input {
+    width: 150px;
+}
+
+div.content form div.url,
+div.content form div.word {
+    margin-right: 40px;
+}
+
+div.content form div.url,
+div.content form div.word,
+div.content form div.description {
+    float: left;
+}
+
+div.content form div.button {
+    clear: both;
+    text-align: center;
+}
+
+div.content form div.button button {
+    margin: 0 10px;
+}

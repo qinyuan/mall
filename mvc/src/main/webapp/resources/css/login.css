@@ -1,0 +1,53 @@
+div.content > div.login {
+    width: 515px;
+    height: 310px;
+    margin: 85px auto 40px;
+    border: 1px solid #AFAFAF;
+    background-color: #ffffff;
+}
+
+div.content > div.login > div.title {
+    height: 40px;
+    background-color: #ECF3F7;
+    font-weight: bold;
+    font-size: 10pt;
+    padding: 12px 20px;
+}
+
+div.content > div.login > div.title img {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+div.content > div.login > div.loginForm {
+    border-top: 1px solid #D9D9D9;
+    padding-top: 20px;
+}
+
+div.content > div.login > div.loginForm p {
+    width: 245px;
+    margin: 35px auto;
+}
+
+#rememberMe {
+    margin-left: 8px;
+    margin-right: 4px;
+}
+
+#rememberMeLabel {
+    color: #999999;
+    font-size: 9pt;
+    margin-right: 100px;
+    vertical-align: 10%;
+}
+
+#loginSubmit {
+    color: #ffffff;
+    background-color: #85C925;
+    height: 30px;
+    width: 57px;
+    border-width: 0;
+    font-size: 9pt;
+}

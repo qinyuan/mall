@@ -1,0 +1,35 @@
+div.content div.searchForm input, div.searchForm button {
+    height: 35px;
+    border: rgb(107, 177, 227) 1px solid;
+}
+
+div.content div.searchForm div{
+height: 36px;
+}
+
+div.content div.searchForm div.searchType button {
+    font-size: 9pt;
+    color: rgb(119, 119, 119);
+    width: 80px;
+    text-align: right;
+}
+
+#searchInput {
+    margin-top: 1px;
+    background: #ffffff url("images/search.gif") no-repeat 345px 8px;
+    width: 368px;
+    border-radius: 0;
+}
+
+div.content div.searchForm span.searchCommit {
+    padding: 0;
+    margin: 0;
+    width: 91px;
+    text-align: left;
+}
+
+div.content div.searchForm span.searchCommit button {
+    height: 35px;
+    padding: 3px 27px;
+    font-size: 14pt;
+}

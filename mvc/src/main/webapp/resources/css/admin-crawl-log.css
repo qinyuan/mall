@@ -1,0 +1,50 @@
+col.index {
+    width: 50px;
+}
+
+col.showId {
+    width: 100px;
+}
+
+col.name {
+    width: 360px;
+}
+
+col.url{
+    width: 300px;
+}
+
+col.time {
+    width: 100px;
+}
+
+col.action {
+    width: 200px;
+}
+
+col.success {
+    width: 60px;
+}
+
+#filterForm {
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+#filterForm > div {
+    float: left;
+    margin-right: 30px;
+}
+
+#filterForm > div.success {
+    padding-top: 5px;
+}
+
+#filterForm > div.showId {
+    padding-top: 3px;
+}
+
+div.crawlCount span{
+    margin-right: 30px;
+}

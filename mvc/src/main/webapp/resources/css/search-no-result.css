@@ -1,0 +1,30 @@
+div.content div.info {
+    background-color: #fff8f6;
+    position: relative;
+    top: 50px;
+    height: 320px;
+}
+
+div.content div.info > div {
+    position: absolute;
+}
+
+div.content div.info div.image {
+    left: 23px;
+    top: 58px;
+}
+
+div.content div.info div.text {
+    left: 115px;
+    top: 20px;
+}
+
+div.content div.info div.searchForm {
+    left: 215px;
+    top: 255px;
+    width: 540px;
+}
+
+div.content div.footer {
+    top: 100px;
+}

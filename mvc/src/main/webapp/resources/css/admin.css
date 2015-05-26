@@ -1,0 +1,210 @@
+div.content {
+    margin-top: 37px;
+}
+
+div.content div.left, div.content div.right {
+    float: left;
+    margin-bottom: 40px;
+}
+
+div.content div.left {
+    padding-top: 8px;
+    width: 120px;
+    margin-right: 10px;
+}
+
+div.content div.left > div {
+    text-align: center;
+    padding: 10px 0;
+}
+
+div.content div.left > div.split {
+    width: 100px;
+    margin: 0 auto;
+    padding: 0;
+    border-top: 1px solid #DCE7EC;
+}
+
+div.content div.left > div.split > div.boldSplit {
+    width: 78px;
+    top: -2px;
+    margin: 0 auto;
+    padding: 0;
+    border: 1px solid #99A9B3;
+}
+
+div.content div.left div.user {
+    color: #800000;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+div.content div.left div.user a {
+    font-size: 9pt;
+    font-weight: normal;
+}
+
+div.content div.left div.activeGroup {
+    font-size: 10pt;
+}
+
+div.content div.left div.activeGroup > div {
+    padding: 1px 0;
+}
+
+div.content div.left div.commodity,
+div.content div.left div.log,
+div.content div.left div.linkGroup > div {
+    font-size: 9pt;
+}
+
+div.content div.left div.log > div {
+    padding: 2px 0;
+}
+
+div.content div.left div.linkGroup > div {
+    padding: 4px 0;
+}
+
+div.content div.right {
+    width: 820px;
+}
+
+div.content div.right div.images > div {
+    background-color: #ffffff;
+    float: left;
+    margin: 0 5px 10px 0;
+}
+
+div.content div.right div.active {
+    border: 4px solid #05FF0D;
+}
+
+div.content div.left span.active {
+    background-color: #05FF0D;
+}
+
+div.content div.right div.inactiveByProgram {
+    border: 4px solid #A53614;
+}
+
+div.content div.left span.inactiveByProgram {
+    background-color: #A53614;
+}
+
+div.content div.right div.inactiveByUser {
+    border: 4px solid #051D00;
+}
+
+div.content div.left span.inactiveByUser {
+    background-color: #051D00;
+}
+
+div.content div.right div.images {
+    overflow: hidden;
+    clear: both;
+}
+
+div.content div.right div.image img {
+    height: 192px;
+    width: 192px;
+}
+
+div.content div.right div.images div.addIcon {
+    background-color: rgb(238, 238, 238);
+    padding: 10px 1px;
+}
+
+div.content div.right div.images div.addIcon div.image {
+    background-color: #ffffff;
+}
+
+div.content div.right div.images div.addIcon img {
+    height: 270px;
+    width: 198px;
+}
+
+div.content div.right div.description {
+    width: 190px;
+    padding: 10px 8px;
+    height: 70px;
+}
+
+div.content div.right div.description a {
+    font-size: 10pt;
+    color: #7F4B2F;
+    cursor: pointer;
+}
+
+div.content div.right div.action {
+    border-top: 1px solid #eeeeee;
+    text-align: right;
+}
+
+div.content div.right div.action img {
+    height: 20px;
+    width: 20px;
+    margin: 0 3px;
+}
+
+div.content div.right div.pagination {
+    padding-left: 287px;
+}
+
+div.content div.right div.pagination li.showButton {
+    display: inline;
+}
+
+div.content div.right div.pagination li.hideButton {
+    display: none;
+}
+
+div.content div.filter {
+    float: left;
+    margin-left: 250px;
+    width: 280px;
+    /*background-color: black;*/
+}
+
+div.content div.filter button {
+    width: 120px;
+}
+
+div.content div.search {
+    margin-bottom: 20px;
+    float: right;
+}
+
+div.content div.search input {
+    border-radius: 0;
+    height: 37px;
+    width: 230px;
+}
+
+div.content div.search span.searchCommit {
+    padding: 0;
+}
+
+div.content div.filter div.branchDropdown {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    display: none;
+    width: 500px;
+    padding: 10px;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px
+}
+
+div.content div.filter div.branchDropdown div.branchGroup div.branch {
+    font-size: 11pt;
+    color: #4169E1;
+    margin: 6px 12px;
+    cursor: pointer;
+}

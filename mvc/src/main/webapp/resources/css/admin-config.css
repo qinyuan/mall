@@ -1,0 +1,48 @@
+fieldset {
+    overflow: hidden;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+div.split {
+    height: 20px;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+#mainForm > div.button {
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+div.uploadImage {
+    float: left;
+    margin-right: 10px;
+    padding-left: 10px;
+}
+
+div.uploadImage input[type=text] {
+    width: 250px;
+}
+
+div.uploadImage textarea {
+    font-size: 9pt;
+}
+
+fieldset.textOnly > div {
+    width: 390px;
+    float: left;
+    padding-left: 10px;
+}
+
+fieldset.textOnly input {
+    width: 30px;
+}
+
+#footLink > table, #footLink > div {
+    margin-left: 10px;
+}
+#footLink > table{
+    margin-bottom: 10px;
+}

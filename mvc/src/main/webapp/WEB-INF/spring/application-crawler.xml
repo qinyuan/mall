@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="application-page-parser.xml"/>
+    <import resource="application-image.xml"/>
+
+    <bean id="expireCommodityRecorder" class="com.qinyuan15.mall.crawler.ExpireCommodityRecorder">
+        <constructor-arg value="2"/>
+        <!-- retry times -->
+    </bean>
+
+    <bean id="crawlTimeValidator" class="com.qinyuan15.mall.crawler.CrawlTimeValidator">
+        <property name="startHour" value="${startHourt}"/>
+        <property name="endHour" value="${endHourt}"/>
+    </bean>
+<!--
+    <bean class="CommodityCrawler" init-method="init">
+        <property name="interval" value="1"/>
+        <property name="threadSize" value="30"/>
+        <property name="httpClientPool" ref="httpClientPool"/>
+        <property name="commodityPool" ref="commodityPool"/>
+        <property name="commodityPageParserBuilder" ref="pageParserBuilder"/>
+        <property name="debugMode" value="${debug}"/>
+        <property name="expireCommodityRecorder" ref="expireCommodityRecorder"/>
+        <property name="crawlTimeValidator" ref="crawlTimeValidator"/>
+    </bean>-->
+</beans>

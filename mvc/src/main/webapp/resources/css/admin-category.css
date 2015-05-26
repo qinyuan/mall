@@ -1,0 +1,73 @@
+div.content table.normal col.action {
+    border-right: 1px solid #C3C3C3;
+    width: 100px;
+}
+
+div.content form {
+    margin-top: 20px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+#categoryForm > div {
+    float: left;
+    margin-right: 30px;
+}
+
+#categoryForm > div.name,
+#categoryForm > div.parent {
+    padding-top: 3px;
+}
+
+div.content form > div label {
+    margin-right: 5px;
+}
+
+div.content table.inner {
+    float: none;
+}
+
+div.content td.poster table.inner td.image {
+    text-align: center;
+}
+
+div.content table.inner td.content span.hot {
+    color: red;
+}
+
+#branchForm {
+    text-align: center;
+    top: 5%;
+    height: 90%;
+    left: 20%;
+    width: 60%;
+    overflow: auto;
+}
+
+#branchForm div.branchGroup {
+    height: 70%;
+}
+
+#branchForm div.branchGroup div.branch {
+    margin: 10px;
+}
+
+#branchForm div.branchGroup div.branch img {
+    margin-bottom: 5px;
+    border: 3px solid transparent;
+}
+
+#branchForm div.branchGroup div.branch img.selected {
+    border: 3px solid #00C000;
+}
+
+#posterForm {
+    top: 30%;
+}
+
+#enlargePoster {
+    position: fixed;
+    left: 0;
+    z-index: 10;
+    display: none;
+}

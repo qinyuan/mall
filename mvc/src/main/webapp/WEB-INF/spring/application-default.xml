@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="defaultFootLink" class="com.qinyuan15.mall.core.config.DefaultAppConfigFootLinks">
+        <property name="footLinks">
+            <list>
+                <bean class="com.qinyuan15.mall.core.dao.AppConfigFootLink">
+                    <property name="text" value="关于我们"/>
+                    <property name="link" value="company-info.html?tab=1"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.dao.AppConfigFootLink">
+                    <property name="text" value="联系我们"/>
+                    <property name="link" value="company-info.html?tab=2"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.dao.AppConfigFootLink">
+                    <property name="text" value="免费声明"/>
+                    <property name="link" value="company-info.html?tab=3"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.dao.AppConfigFootLink">
+                    <property name="text" value="友情链接"/>
+                    <property name="link" value="company-info.html?tab=4"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.dao.AppConfigFootLink">
+                    <property name="text" value="品牌大全"/>
+                    <property name="link" value="branch.html"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,382 @@
+div.content > div.left {
+    margin: 2px 0 80px 0;
+    width: 670px;
+}
+
+div.content > div.left div.snapshot {
+    background-color: #ffffff;
+    padding-top: 20px;
+}
+
+div.content > div.left div.snapshot div.left {
+    margin-left: 15px;
+}
+
+div.content > div.left div.snapshot div.left div.branch {
+    padding: 5px;
+    font-size: 9pt;
+    min-height: 48px;
+}
+
+div.content > div.left div.snapshot div.left div.largeImage {
+    padding: 0;
+    margin: 20px 0;
+    width: 300px;
+    text-align: right;
+    min-height: 300px;
+}
+
+div.content > div.left div.snapshot div.left div.largeImage img {
+    border: 1px solid rgb(223, 223, 223);
+    padding: 0;
+}
+
+div.content > div.left div.snapshot div.left div.largeImage div.enlargeIcon {
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    background-image: url("images/detail/enlarge.png");
+    cursor: pointer;
+}
+
+div.content > div.left div.snapshot div.left div.enlargeImage {
+    position: absolute;
+    top: -60px;
+    right: -120px;
+    z-index: 5;
+    display: none;
+}
+
+div.content > div.left div.snapshot div.left div.smallImage {
+    padding-left: 10px;
+    padding-bottom: 20px;
+    min-height: 44px;
+    width: 290px;
+}
+
+div.content > div.left div.snapshot div.left div.smallImage img {
+    margin: 0;
+    border: 2px solid #ffffff;
+    padding: 1px;
+}
+
+div.content > div.left div.snapshot div.left div.smallImage img.selected {
+    border-color: #de533c;
+}
+
+div.content > div.left div.snapshot div.right {
+    position: absolute;
+    right: -20px;
+    /*top: 68px;*/
+    top: 80px;
+    width: 350px;
+    padding: 5px;
+}
+
+div.content > div.left div.snapshot div.right div.name {
+    padding-left: 8px;
+    width: 300px;
+    /*height: 110px;*/
+    height: 98px;
+}
+
+div.content > div.left div.snapshot div.right div.price {
+    background-image: url("images/detail/price-back.png");
+    background-repeat: no-repeat;
+    width: 338px;
+    height: 137px;
+    font-size: 10pt;
+    line-height: 35px;
+    padding: 12px 5px 12px 30px;
+    color: #808080;
+}
+
+div.content > div.left div.snapshot div.right div.price span.lowPrice {
+    font-size: 14pt;
+    color: #e51515;
+    padding-right: 60px;
+}
+
+div.content > div.left div.snapshot div.right div.price span.highestPrice {
+    padding-right: 30px;
+}
+
+div.content > div.left div.snapshot div.right div.price div.trend {
+    padding: 0 0 2px 0;
+    float: left;
+    margin-top: 10px;
+    line-height: 20px;
+}
+
+div.content > div.left div.snapshot div.right div.price div.trend div.text {
+    padding-bottom: 1px;
+}
+
+div.content > div.left div.snapshot div.right div.price div.trend div.text span {
+    cursor: pointer;
+}
+
+div.content > div.left div.snapshot div.right div.priceHistory {
+    position: absolute;
+    top: 23px;
+    left: -120px;
+    width: 330px;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    z-index: 5;
+    padding: 0 10px 25px 5px;
+    display: none;
+}
+
+div.content > div.left div.snapshot div.right div.priceHistory div.comments {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+div.content > div.left div.snapshot div.right div.priceHistory div.comments a {
+    background-color: red;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 9pt;
+}
+
+div.content > div.left div.snapshot div.right div.priceHistory div.comments div.appraiseGroup {
+    float: left;
+    margin: 0 5px;
+    padding: 0;
+    line-height: 28px;
+}
+
+div.content > div.left div.snapshot div.right div.priceHistory div.comments a.positive {
+    background-color: #FFE2E2;
+    border: 1px solid #B10000;
+    color: #B10000;
+}
+
+div.content > div.left div.snapshot div.right div.priceHistory div.comments a.negative {
+    background-color: #D9F5ED;
+    border: 1px solid #40927F;
+    color: #40927F;
+}
+
+#trendChart {
+    margin-left: 20px;
+}
+
+div.content > div.left div.snapshot div.right div.priceHistory div.triangle-border {
+    position: absolute;
+    left: 220px;
+    width: 0;
+    height: 0;
+    top: 0;
+    border-width: 5px;
+    border-style: solid;
+}
+
+div.content > div.left div.snapshot div.right div.priceHistory div.tb-border {
+    top: -11px;
+    border-color: transparent transparent #d9d9d9 transparent;
+}
+
+div.content > div.left div.snapshot div.right div.priceHistory div.tb-background {
+    top: -10px;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+div.content > div.left div.snapshot div.right div.buySubmit {
+    right: 40px;
+    margin-top: 40px;
+    text-align: right;
+}
+
+#couponLink {
+    font-size: 9pt;
+    color: #808080;
+}
+
+#couponLink img {
+    margin-top: -3px;
+}
+
+#buySubmit {
+    margin-left: 25px;
+    margin-right: 30px;
+    background-color: #f3611b;
+    padding: 8px 15px;
+}
+
+div.content > div.left div.snapshot div.share div.foundTime {
+    padding: 10px 30px;
+    font-size: 9pt;
+    color: #999999;
+}
+
+div.content > div.left div.snapshot div.share div.links {
+    position: absolute;
+    right: 40px;
+    bottom: 10px;
+    font-size: 9pt;
+}
+
+div.content > div.left div.snapshot div.share div.links img {
+    margin: 0 2px;
+}
+
+div.content > div.left div.description {
+    background-color: #f6f6f1;
+}
+
+div.content > div.left div.description div.title {
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+}
+
+div.content > div.left div.description div.title span {
+    font-size: 10pt;
+    padding: 12px 24px;
+    margin-right: -4px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+div.content > div.left div.description div.title span.shoppe {
+    margin-left: -4px;
+}
+
+div.content > div.left div.description div.title span {
+    color: #808080;
+    cursor: pointer;
+}
+
+div.content > div.left div.description div.title span.selected {
+    background: url("images/detail/goodsDetailBack.png") repeat-x top center;
+    color: #b10000;
+}
+
+div.content > div.left div.description div.detail {
+    padding-bottom: 10px;
+    min-height: 245px;
+    overflow: hidden;
+}
+
+div.content > div.left div.description div.detail div.shoppe {
+    display: none;
+    line-height: 30px;
+}
+
+div.content > div.left div.description div.detail div.shoppe div {
+    float: left;
+}
+
+div.content > div.left div.description div.detail div.shoppe a {
+    font-size: 10pt;
+    margin: 0 40px 0 0;
+    color: #3377aa;
+}
+
+div.content > div.left div.description div.detail > div {
+    margin-left: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div.content > div.left div.description div.detail td {
+    color: #666666;
+    font-size: 10pt;
+    height: 27px;
+    min-width: 180px;
+}
+
+div.content > div.left div.description div.detail td > div {
+    padding: 0;
+    margin: 0;
+    height: 20px;
+    width: 200px;
+    overflow: hidden;
+}
+
+div.content > div.left div.detailImage {
+    margin: 18px 0;
+    text-align: center;
+}
+
+div.content > div.right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 250px;
+}
+
+div.content > div.right div.whiteBack div.title {
+    font-size: 10pt;
+    color: #808080;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+div.content > div.right div.whiteBack div.other {
+    padding: 5px 0 10px 10px;
+    height: 310px;
+    overflow: scroll;
+    overflow-x: auto;
+}
+
+div.content > div.right div.whiteBack div.other > div {
+    float: left;
+    padding: 1px;
+}
+
+div.content > div.right div.whiteBack div.other > div div.price {
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+    font-size: 9pt;
+    color: #ffffff;
+}
+
+div.content > div.right div.whiteBack div.other > div div.price div.priceBack {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #9C958C;
+}
+
+div.content > div.right div.whiteBack div.other > div div.price div.text {
+    padding: 2px 2px 0;
+}
+
+div.content > div.right div.whiteBack div.other > div img {
+    height: 107px;
+    width: 107px;
+    border: 2px solid #ffffff;
+}
+
+div.content > div.right div.whiteBack {
+    padding-bottom: 10px;
+}
+
+div.content > div.right div.attention {
+    color: #000000;
+    background-color: #e7e7e7;
+}
+
+div.content > div.right div.attention div.title {
+    font-size: 10pt;
+    padding: 15px;
+}
+
+div.content > div.right div.attention div.link {
+    font-size: 9pt;
+    padding: 0 15px 15px 15px;
+}
+
+div.content > div.right div.advice {
+    margin-top: 20px;
+}
+
+div.content > div.right div.advice a {
+    font-size: 10pt;
+    color: #999999;
+}

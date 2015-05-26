@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export JAVA_HOME=/usr/java/jdk1.7.0_71
+cmd="mvn test -Dtest=$1"
+echo $cmd
+$cmd

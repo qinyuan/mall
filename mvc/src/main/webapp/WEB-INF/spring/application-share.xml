@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.qinyuan15.mall.core.config.share.ShareLinks">
+        <property name="links">
+            <list>
+                <bean class="com.qinyuan15.mall.core.config.share.ShareLink">
+                    <property name="url" value="http://weibo.com/hi"/>
+                    <property name="title" value="新浪微博"/>
+                    <property name="icon" value="resources/css/images/detail/share1.png"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.config.share.ShareLink">
+                    <property name="url" value="http://t.qq.com"/>
+                    <property name="title" value="腾讯微博"/>
+                    <property name="icon" value="resources/css/images/detail/share2.png"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.config.share.ShareLink">
+                    <property name="url" value="http://qzone.qq.com"/>
+                    <property name="title" value="QQ空间"/>
+                    <property name="icon" value="resources/css/images/detail/share3.png"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.config.share.ShareLink">
+                    <property name="url" value="http://www.renren.com"/>
+                    <property name="title" value="人人网"/>
+                    <property name="icon" value="resources/css/images/detail/share4.png"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.config.share.ShareLink">
+                    <property name="url" value="http://www.kaixin001.com"/>
+                    <property name="title" value="开心网"/>
+                    <property name="icon" value="resources/css/images/detail/share5.png"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.config.share.ShareLink">
+                    <property name="url" value="http://www.douban.com"/>
+                    <property name="title" value="豆瓣"/>
+                    <property name="icon" value="resources/css/images/detail/share6.png"/>
+                </bean>
+                <bean class="com.qinyuan15.mall.core.config.share.ShareLink">
+                    <property name="url" value="https://wx.qq.com"/>
+                    <property name="title" value="微信"/>
+                    <property name="icon" value="resources/css/images/detail/share7.png"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+</beans>

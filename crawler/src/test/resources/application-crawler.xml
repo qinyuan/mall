@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:property-placeholder location="classpath:spring.properties"/>
+
+    <bean id="expireCommodityRecorder" class="com.qinyuan15.mall.crawler.ExpireCommodityRecorder">
+        <constructor-arg value="2"/>
+        <!-- retry times -->
+    </bean>
+
+    <bean id="crawlTimeValidator" class="com.qinyuan15.mall.crawler.CrawlTimeValidator">
+        <property name="startHour" value="${startHourt}"/>
+        <property name="endHour" value="${endHourt}"/>
+    </bean>
+
+    <bean id="proxyPool" class="com.qinyuan15.mall.crawler.http.DatabaseProxyPool" init-method="init">
+        <property name="size" value="200"/>
+        <!-- reload each minute -->
+        <property name="reloadInterval" value="60"/>
+    </bean>
+
+    <bean id="proxySpeedRecorder" class="com.qinyuan15.mall.crawler.http.DatabaseProxySpeedRecorder"/>
+    <bean id="httpClientPool" class="com.qinyuan15.utils.http.HttpClientPool">
+        <property name="proxyPool" ref="proxyPool"/>
+        <property name="proxySpeedRecorder" ref="proxySpeedRecorder"/>
+    </bean>
+
+    <bean id="commodityPool" class="com.qinyuan15.mall.core.commodity.DatabaseCommodityPool"/>
+
+    <bean id="pageParserBuilder" class="com.qinyuan15.mall.crawler.html.CommodityPageParserBuilder">
+        <constructor-arg ref="httpClientPool"/>
+    </bean>
+
+    <bean class="com.qinyuan15.mall.crawler.CommodityCrawler" init-method="init">
+        <property name="interval" value="1"/>
+        <property name="threadSize" value="30"/>
+        <property name="httpClientPool" ref="httpClientPool"/>
+        <property name="commodityPool" ref="commodityPool"/>
+        <property name="commodityPageParserBuilder" ref="pageParserBuilder"/>
+        <property name="debugMode" value="${debug}"/>
+        <property name="expireCommodityRecorder" ref="expireCommodityRecorder"/>
+        <property name="crawlTimeValidator" ref="crawlTimeValidator"/>
+    </bean>
+</beans>

@@ -1,0 +1,14 @@
+div.content div.order {
+    margin: 0 0 20px 0;
+}
+
+div.content td.commodityCount span.commodityCountValue {
+    display: inline-block;
+    width: 30px;
+}
+
+div.content td.commodityCount span.showBar {
+    display: inline-block;
+    width: 0;
+    background-color: #00c000;
+}

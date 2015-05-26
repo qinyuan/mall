@@ -1,0 +1,15 @@
+.DS_*
+.idea
+.classpath
+.project
+.svn
+bin
+*.class
+.settings
+*.iml
+target
+logs
+*.log*
+out
+dist/*
+overlays/*

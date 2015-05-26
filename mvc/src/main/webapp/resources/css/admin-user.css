@@ -1,0 +1,11 @@
+div.content table {
+    float: left;
+}
+
+div.content form {
+    float: right;
+}
+
+div.content form > div {
+    margin: 20px;
+}

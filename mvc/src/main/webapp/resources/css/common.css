@@ -1,0 +1,202 @@
+a:focus {
+    outline: none;
+}
+
+.darkFont {
+    color: rgb(128, 128, 128);
+}
+
+.whiteFont {
+    color: #ffffff;
+}
+
+.lightGrayFont {
+    color: rgb(102, 102, 102);
+}
+
+.sameWidthFont {
+    font-family: Courier New, Courier, monospace;
+}
+
+.blueFont {
+    color: rgb(51, 145, 212);
+}
+
+img.link {
+    cursor: pointer;
+}
+
+a.noLineAnchor {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-size: 12pt;
+    background-color: rgb(238, 238, 238);
+}
+
+.grayBack {
+    background-color: rgb(238, 238, 238);
+}
+
+.yellowBack {
+    background-color: #FFFF00;
+}
+
+.goldenRodBack {
+    background-color: #DAA520;
+}
+
+.orangeBack {
+    background-color: rgb(247, 148, 100);
+    color: white;
+}
+
+.whiteBack {
+    background-color: #ffffff;
+}
+
+div {
+    position: relative;
+}
+
+div.header {
+    background-color: rgb(18, 67, 133);
+    height: 130px;
+    padding: 20px 0;
+}
+
+div.navigationBack {
+    background-color: #ffffff;
+    height: 57px;
+}
+
+div.navigation > div.logo {
+    top: 8px;
+    left: -5px;
+}
+
+div.navigation > div.navigationLinks {
+    position: absolute;
+    top: 0;
+    right: -10px;
+}
+
+div.navigation div.navigationLinks a {
+    margin: 0 15px;
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+div.navigation > div > a.selected {
+    color: rgb(75, 167, 51);
+    font-size: 16pt;
+}
+
+div.content {
+    margin-top: 30px;
+}
+
+div.content, div.navigation, div.header > div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 950px;
+}
+
+div.footer {
+    border-top: 1px dashed rgb(220, 220, 220);
+    padding-top: 20px;
+    font-size: 9pt;
+    clear: both;
+}
+
+div.footer > div.links {
+    position: absolute;
+    top: 23px;
+    right: 0;
+}
+
+div.footer > div.links a {
+    margin: 0 12px;
+    text-decoration: none;
+}
+
+div.rightFloat {
+    position: fixed;
+    right: 0;
+    top: 300px;
+    display:none;
+}
+
+.lightTransparent {
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+}
+
+.mediumTransparent {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.deepTransparent {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+.boxShadow {
+    -moz-box-shadow: 1px 1px 10px rgb(213, 213, 213);
+    -webkit-box-shadow: 1px 1px 10px rgb(213, 213, 213);
+    box-shadow: 1px 1px 10px rgb(213, 213, 213);
+}
+
+button.orangeButton, input.orangeButton, a.orangeButton {
+    color: #ffffff;
+    background-color: rgb(255, 64, 1);
+    border: 0;
+    border-radius: 5px;
+}
+
+table.normal {
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+}
+
+table.normal thead {
+    border-bottom: 1px solid #000000;
+}
+
+table.normal tbody tr {
+    border-bottom: 1px dashed #cccccc;
+}
+
+table.normal th, table.normal td {
+    padding: 5px;
+    font-size: 10pt;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+img.branch-logo {
+    width: 82px;
+    height: 38px;
+}
+
+div.content form span.required {
+    color: #C00000;
+}
+
+div.content div.closeEnlargeIcon {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 48px;
+    height: 48px;
+    background-image: url('images/detail/close.png');
+    cursor: pointer;
+}
+
+div.content form input[type='file'] {
+    width: 220px;
+}

@@ -1,0 +1,70 @@
+div.content div.basic {
+    height: 180px;
+}
+
+div.content div.link td {
+    height: 55px;
+}
+
+#showId {
+    /*width: 470px;*/
+    width: 250px;
+}
+
+div.content div.detail {
+    margin-top: 17px;
+    padding-top: 40px;
+}
+
+div.content div.detail col.title {
+    width: 100px;
+}
+
+div.content div.detail col.content {
+    width: 670px;
+}
+
+div.content div.detail > table > tbody > tr > td {
+    vertical-align: top;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+div.content div.detail textarea {
+    padding: 10px;
+    font-size: 11pt;
+}
+
+div.content div.detail td input.form-control {
+    width: 180px;
+    display: inline;
+    margin-right: 6px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#deleteCommodity {
+    background-color: #387EEE;
+}
+
+div.content div.price {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+div.content div.price div.recommend {
+    color: #800000;
+}
+
+div.content div.price td {
+    padding: 5px;
+}
+
+div.content div.price td.title {
+    text-align: right;
+    width: 78px;
+}
+
+div.content div.price td.text {
+    width: 170px;
+}

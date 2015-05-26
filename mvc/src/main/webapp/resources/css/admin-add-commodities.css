@@ -1,0 +1,61 @@
+div.content div.basic {
+    height: 140px;
+}
+
+div.content div.link td.title {
+    width: 80px;
+    vertical-align: top;
+    padding-top: 8px;
+}
+
+div.content div.link td.body {
+    width: 770px;
+}
+
+div.content div.link td.showIds img {
+    margin: 15px 0;
+}
+
+div.content div.link div.input-group input.form-control {
+    width: 175px;
+    margin: 5px;
+}
+
+div.content div.link table.showIds {
+    margin-bottom: 20px;
+}
+
+div.content div.link div.commodityInfo {
+    float: left;
+}
+
+div.content div.link div.commodityInfo div.links {
+    border-top: 2px solid black;
+    width: 760px;
+}
+
+div.content div.link div.commodityInfo div.links > div {
+    float: left;
+    margin: 10px 0;
+}
+
+div.content div.link div.commodityInfo div.links div.title {
+    width: 90px;
+}
+
+div.content div.link div.commodityInfo div.links div.body {
+    width: 650px;
+}
+
+div.content div.link div.commodityInfo div.deleteLink {
+    position: absolute;
+    right: 90px;
+    top: 15px;
+    cursor: pointer;
+}
+
+div.content div.link div.commodityInfo div.deleteLink a {
+    font-size: 12pt;
+    font-weight: bold;
+    font-style: italic;
+}

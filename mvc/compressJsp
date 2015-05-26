@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+import sys, re
+
+target_file = sys.argv[1]
+
+f = open(target_file, 'r')
+content = f.read()
+
+regex = re.compile("\n\s*")
+new_content = regex.sub(' ', content)
+new_content = new_content.strip()
+
+f = open(target_file, 'w')
+f.write(new_content)

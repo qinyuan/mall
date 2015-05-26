@@ -1,0 +1,88 @@
+div.content table {
+    margin-bottom: 20px;
+}
+
+div.content table col.index {
+    width: 40px;
+}
+
+div.content table col.name,
+div.content table col.firstLetter,
+div.content table col.parent {
+    width: 50px;
+}
+
+div.content table col.logo {
+    width: 200px;
+}
+
+div.content table col.shoppe {
+    width: 140px;
+}
+
+div.content table col.slogan {
+    width: 270px;
+}
+
+div.content table td.logo div.rectangle,
+div.content table td.logo div.squareLogo {
+    border-bottom: 1px solid #D1CFE5;
+}
+
+div.content form {
+    padding: 5px;
+}
+
+div.content form div.basic input {
+    width: 150px;
+    margin-right: 50px;
+}
+
+div.content form div.basic select {
+    margin-left: 5px;
+}
+
+div.content form div.logo input[type="file"] {
+    display: inline;
+}
+
+div.content form div.button {
+    text-align: center;
+}
+
+div.content form div.button button {
+    margin: 0 20px;
+}
+
+div.content form div.slogan textarea {
+    font-size: 9pt;
+}
+
+div.content form div.shoppe {
+    overflow: hidden;
+}
+
+div.content form div.shoppe > div {
+    float: left;
+}
+
+div.content form div.shoppe > div.left {
+    margin-right: 20px;
+    width: 80px;
+}
+
+div.content form div.shoppe > div.right label {
+    margin-right: 10px;
+}
+
+div.content form > div {
+    padding: 10px;
+}
+
+div.content form > div * {
+    vertical-align: middle;
+}
+
+#poster, #slogan {
+    margin-left: 10px;
+}

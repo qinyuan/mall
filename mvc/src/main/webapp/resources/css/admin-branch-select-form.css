@@ -1,0 +1,29 @@
+div.content div.branchGroupLetter {
+    position: relative;
+    overflow: hidden;
+    width: 443px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.content div.branchGroupLetter > div {
+    float: left;
+    padding: 5px 23px;
+    font-size: 12pt;
+    color: #3A0088;
+    border: 1px solid #696969;
+    cursor: pointer;
+}
+
+div.content div.branchGroupLetter > div.selected {
+    background-color: #696969;
+    color: #ffffff;
+}
+
+div.content div.branchGroup {
+    overflow: hidden;
+}
+
+div.content div.branchGroup div.branch {
+    float: left;
+}

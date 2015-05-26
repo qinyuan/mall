@@ -1,0 +1,85 @@
+div.content {
+    margin-top: 46px;
+    padding-top: 0;
+}
+
+div.content div.title {
+    font-size: 13pt;
+    margin: 10px 0;
+    color: #2ea1cf;
+}
+
+div.content div.center {
+    float: none;
+}
+
+div.content div.detail {
+    background-color: #ffffff;
+    min-height: 700px;
+    width: 710px;
+    border: 1px solid rgb(223, 223, 223);
+    margin-bottom: 65px;
+}
+
+div.content div.rightNavigation {
+    right: 0;
+    top: 0;
+    position: absolute;
+}
+
+div.content div.rightNavigation div {
+    text-align: center;
+}
+
+div.content div.rightNavigation > div.image {
+    margin-bottom: 40px;
+}
+
+div.content div.rightNavigation div.company {
+    margin: 4px 35px;
+    padding: 3px;
+}
+
+div.content div.rightNavigation div.selected {
+    border: 2px solid #99a9b3;
+    border-radius: 5px;
+}
+
+div.content div.detail {
+    padding: 35px 25px;
+}
+
+div.content div.detail table.advice {
+    margin: 15px;
+}
+
+div.content div.detail table.advice tr {
+    vertical-align: top;
+}
+
+div.content div.detail table.advice td {
+    padding: 10px;
+}
+
+div.content div.detail table.advice td.prompt {
+    padding-top: 12px;
+    text-align: right;
+}
+div.content div.detail table.advice span.input-group-addon {
+    background-color: transparent;
+    border: 0;
+}
+
+div.content div.detail div.submit {
+    margin-top: 35px;
+    text-align: center;
+}
+
+div.content div.detail div.submit button {
+    font-size: 12pt;
+    width: 180px;
+    height: 36px;
+    letter-spacing: 20px;
+    padding-left: 30px;
+    font-weight: bold;
+}

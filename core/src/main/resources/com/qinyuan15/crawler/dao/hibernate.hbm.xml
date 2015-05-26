@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.qinyuan15.crawler.dao">
+    <class name="com.qinyuan15.mall.core.dao.AppConfig" table="app_config">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="detailText" column="detail_text"/>
+        <property name="globalBanner" column="global_banner"/>
+        <property name="globalLogo" column="global_logo"/>
+        <property name="indexFootPoster" column="index_foot_poster"/>
+        <property name="indexHeadPoster" column="index_head_poster"/>
+        <property name="indexFootPosterLink" column="index_foot_poster_link"/>
+        <property name="branchRankImage" column="branch_rank_image"/>
+        <property name="noFoundImage" column="no_found_image"/>
+        <property name="noFoundText" column="no_found_text"/>
+        <property name="adminPaginationCommoditySize" column="admin_pagination_commodity_size"/>
+        <property name="adminPaginationButtonSize" column="admin_pagination_button_size"/>
+        <property name="maxCommodityPictureSize" column="max_commodity_picture_size"/>
+        <property name="maxCommodityDetailPictureSize" column="max_commodity_detail_picture_size"/>
+        <property name="relatedCommoditySize" column="related_commodity_size"/>
+        <property name="favicon"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.AppConfigDetailImage" table="app_config_detail_image">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="path"/>
+        <property name="link"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.AppConfigFootLink" table="app_config_foot_link">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="text"/>
+        <property name="link"/>
+        <property name="ranking"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.AppraiseGroup" table="appraise_group">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="commodityId" column="commodity_id"/>
+        <property name="content"/>
+        <property name="positive"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.Article" table="article">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="content"/>
+        <property name="backgroundColor" column="background_color"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.Branch" table="branch">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="name"/>
+        <property name="logo"/>
+        <property name="parentId" column="parent_id"/>
+        <property name="firstLetter" column="first_letter"/>
+        <property name="squareLogo" column="square_logo"/>
+        <property name="poster"/>
+        <property name="slogan"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.Category" table="category">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="name"/>
+        <property name="parentId" column="parent_id"/>
+        <property name="ranking"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.CategoryBranch" table="category_branch">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="categoryId" column="category_id"/>
+        <property name="branchId" column="branch_id"/>
+        <property name="ranking"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.CategoryPoster" table="category_poster">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="categoryId" column="category_id"/>
+        <property name="path"/>
+        <property name="link"/>
+        <property name="ranking"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.Commodity" table="commodity">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="name"/>
+        <property name="url"/>
+        <property name="buyUrl" column="buy_url"/>
+        <property name="price"/>
+        <property name="discoverTime" column="discover_time"/>
+        <property name="active"/>
+        <property name="branchId" column="branch_id"/>
+        <property name="serialNumber" column="serial_number"/>
+        <property name="showId" column="show_id"/>
+        <property name="parameters"/>
+        <property name="categoryId" column="category_id"/>
+        <property name="userId" column="user_id"/>
+        <property name="sales"/>
+        <property name="inLowPrice" column="in_low_price"/>
+        <property name="crawlDate" column="crawl_date"/>
+        <property name="deactivateByProgram" column="deactivate_by_program"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.CommodityCrawlLog" table="commodity_crawl_log">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="commodityId" column="commodity_id"/>
+        <property name="action"/>
+        <property name="logTime" column="log_time"/>
+        <property name="success"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.CommodityPicture" table="commodity_picture">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="commodityId" column="commodity_id"/>
+        <property name="url"/>
+        <property name="detail"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.HotSearchWord" table="hot_search_word">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="content"/>
+        <property name="categoryId" column="category_id"/>
+        <property name="ranking"/>
+        <property name="hot"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.IndexLogo" table="index_logo">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="path"/>
+        <property name="link"/>
+        <property name="ranking"/>
+        <property name="description"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.PriceRecord" table="price_record">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="commodityId" column="commodity_id"/>
+        <property name="recordTime" column="record_time"/>
+        <property name="price"/>
+        <property name="grabTime" column="grab_time"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.SeoKeyword" table="seo_keyword">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="url"/>
+        <property name="word"/>
+        <property name="description"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.Shoppe" table="shoppe">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="name"/>
+        <property name="url"/>
+        <property name="branchId" column="branch_id"/>
+    </class>
+    <class name="com.qinyuan15.mall.core.dao.UserLog" table="user_log">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="userId" column="user_id"/>
+        <property name="action"/>
+        <property name="logTime" column="log_time"/>
+    </class>
+    <class name="com.qinyuan15.utils.security.User" table="user">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="username"/>
+        <property name="password"/>
+        <property name="role"/>
+    </class>
+    <class name="com.qinyuan15.utils.http.Proxy" table="proxy">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="host"/>
+        <property name="port"/>
+        <property name="type"/>
+        <property name="speed"/>
+        <property name="speedUpdateTime" column="speed_update_time"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+div.searchInfo {
+    background-color: #ffffff;
+    margin-top: 30px;
+    margin-bottom: 23px;
+    padding: 15px 25px;
+    color: #806666;
+}
+
+div.searchInfo > div.keyWord {
+    padding: 18px 0;
+}
+
+div.searchInfo > div.search {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 600px;
+}

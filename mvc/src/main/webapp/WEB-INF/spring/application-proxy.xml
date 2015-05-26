@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/task
+           http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <!-- proxy test job start -->
+    <bean id="proxyTestJob" class="com.qinyuan15.mall.crawler.http.ProxiesTester">
+        <constructor-arg>
+            <bean class="com.qinyuan15.mall.crawler.http.DatabaseProxySpeedRecorder"/>
+        </constructor-arg>
+    </bean>
+    <!-- proxy test job end -->
+
+    <!-- proxy download job start -->
+    <bean id="pachongPageParser" class="com.qinyuan15.mall.crawler.html.PachongPageParser"/>
+    <bean id="pachongCralwer" class="com.qinyuan15.mall.crawler.ProxyCrawlerImpl">
+        <property name="host" value="http://pachong.org"/>
+        <property name="pageParser" ref="pachongPageParser"/>
+    </bean>
+
+    <bean id="chnlankerPageParser" class="com.qinyuan15.mall.crawler.html.ChnlankerPageParser"/>
+    <bean id="chnlankerCrawler1" class="com.qinyuan15.mall.crawler.ProxyCrawlerImpl">
+        <property name="host" value="http://proxy.chnlanker.com"/>
+        <property name="pageParser" ref="chnlankerPageParser"/>
+    </bean>
+    <bean id="chnlankerCrawler2" class="com.qinyuan15.mall.crawler.ProxyCrawlerImpl">
+        <property name="host" value="http://proxy.chnlanker.com/?t=anonymous"/>
+        <property name="pageParser" ref="chnlankerPageParser"/>
+    </bean>
+    <bean id="chnlankerCrawler3" class="com.qinyuan15.mall.crawler.ProxyCrawlerImpl">
+        <property name="host" value="http://proxy.chnlanker.com/?t=hightanonymous"/>
+        <property name="pageParser" ref="chnlankerPageParser"/>
+    </bean>
+    <bean id="chnlankerCrawler4" class="com.qinyuan15.mall.crawler.ProxyCrawlerImpl">
+        <property name="host" value="http://proxy.chnlanker.com/?t=transparent"/>
+        <property name="pageParser" ref="chnlankerPageParser"/>
+    </bean>
+
+    <bean id="proxyDowloadJob" class="com.qinyuan15.mall.crawler.ProxyDownloader">
+        <property name="crawlers">
+            <list>
+                <ref bean="pachongCralwer"/>
+                <ref bean="chnlankerCrawler1"/>
+                <ref bean="chnlankerCrawler2"/>
+                <ref bean="chnlankerCrawler3"/>
+                <ref bean="chnlankerCrawler4"/>
+            </list>
+        </property>
+    </bean>
+    <!-- proxy download job end -->
+
+    <task:scheduled-tasks>
+        <!-- run in 0 o'clock of each day -->
+        <task:scheduled ref="proxyTestJob" method="run" cron="0 0 0 * * ?"/>
+        <!-- run in 2 o'clock of each day -->
+        <!--<task:scheduled ref="proxyDowloadJob" method="save" cron="0 0 2 * * ?"/>-->
+        <task:scheduled ref="proxyDowloadJob" method="save" cron="0 40 * * * ?"/>
+    </task:scheduled-tasks>
+
+</beans>

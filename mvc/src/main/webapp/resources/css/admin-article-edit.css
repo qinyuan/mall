@@ -1,0 +1,35 @@
+div.content > div.boxShadow {
+    background-color: #ffffff;
+    overflow: hidden;
+    margin-bottom: 80px;
+}
+
+div.content > div.boxShadow div.button {
+    text-align: center;
+    padding: 10px 0 15px;
+}
+
+#editDiv {
+    padding: 10px;
+}
+
+#editDiv div.backgroundColor {
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    margin-left: 100px;
+}
+
+#editDiv div.backgroundColor input {
+    width: 80px;
+}
+
+#viewDiv {
+    display: none;
+    overflow: hidden;
+}
+
+#viewDiv div.button {
+    background-color: #EDEDED;
+    border: 1px solid #CCCCCC;
+}

@@ -1,0 +1,258 @@
+div.content > div {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+div.content > div.boxShadow form > div {
+    padding-left: 80px;
+    background-color: #ffffff;
+}
+
+div.content div.boxShadow form > div.button {
+    background-color: transparent;
+    padding: 30px 0;
+    text-align: center;
+}
+
+div.content div.boxShadow form > div.button button {
+    margin: 0 90px;
+    color: #ffffff;
+    padding: 5px 20px;
+    border: 0;
+}
+
+div.content div.basic {
+    padding-top: 10px;
+    vertical-align: middle;
+}
+
+div.content div.basic span.title, div.content div.basic div.title {
+    margin-right: 18px;
+}
+
+div.content div.basic > div {
+    margin: 20px 0;
+}
+
+div.content div.basic div.branch > div.title,
+div.content div.basic div.category > div.title {
+    padding-top: 6px;
+}
+
+#branchSelect, #firstLevelBranchSelect, #secondLevelBranchSelect,
+#categorySelect, #subCategorySelect {
+    position: absolute;
+    top: 0;
+}
+
+#branchSelect, #categorySelect {
+    left: 85px;
+}
+
+#firstLevelBranchSelect, #subCategorySelect {
+    left: 278px;
+}
+
+#secondLevelBranchSelect {
+    left: 470px;
+}
+
+div.content div.basic div.handle-link,
+div.content div.basic div.branch div.require-info,
+div.content div.basic div.category div.require-info {
+    position: absolute;
+    top: 6px;
+}
+
+div.content div.basic div.handle-link {
+    right: 30px;
+}
+
+div.content div.basic div.branch div.require-info {
+    left: 670px;
+}
+
+div.content div.basic div.branch div.branchDropdown {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    display: none;
+    width: 500px;
+    padding: 10px;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px
+}
+
+div.content div.basic div.branch div.branchDropdown div.branchGroupLetter > div {
+    font-size: 12pt;
+}
+
+div.content div.basic div.branch div.branchDropdown div.branchGroup {
+    margin-top: 10px;
+}
+
+div.content div.basic div.branch div.branchDropdown div.hide {
+    display: none;
+}
+
+div.content div.basic div.branch div.branchDropdown div.branchGroup div.branch {
+    font-size: 11pt;
+    color: #4169E1;
+    margin: 6px 12px;
+    cursor: pointer;
+}
+
+div.content div.basic div.category div.require-info {
+    left: 480px;
+}
+
+div.content div.basic button {
+    background: no-repeat url("images/edit-commodity/select.png") right #ffffff;
+    width: 180px;
+    text-align: left;
+}
+
+div.content div.link {
+    margin-top: 17px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: auto;
+}
+
+div.content div.link td {
+    padding-right: 15px;
+}
+
+div.content div.link a.keyWordLink {
+    font-size: 10pt;
+    color: #1A1AA6;
+}
+
+div.content div.link a.crawlerLink,
+div.content div.link a.buyLink {
+    text-decoration: underline;
+    color: #000000;
+}
+
+div.content div.link td span.runCrawlerInfo {
+    font-size: 10pt;
+    margin-left: 10px;
+    color: #ff0000;
+}
+
+#submitInfo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: yellow;
+    text-align: center;
+    z-index: 10;
+    background-color: #000000;
+}
+
+#submitInfo h1 {
+    position: relative;
+    top: 50%;
+}
+
+#publishCommodity {
+    background-color: #EB4542;
+}
+
+div.content div.link div.images {
+    margin-top: 15px;
+    clear: both;
+    overflow: hidden;
+}
+
+div.content div.link div.images > div {
+    vertical-align: top;
+}
+
+div.content div.link div.images div.title {
+    color: #000000;
+    float: left;
+    margin-right: 20px;
+}
+
+div.content div.link div.images div.imageGroup {
+    width: 310px;
+    float: right;
+}
+
+div.content div.link div.images > div {
+    float: left;
+}
+
+div.content div.link div.images div.image {
+    float: left;
+    text-align: center;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+div.content div.link div.images div.image a {
+    color: #808080;
+    font-size: 9pt;
+}
+
+div.content div.link div.images div.image a {
+    color: #808080;
+    font-size: 9pt;
+}
+
+div.content div.link div.images div.image img {
+    height: 40px;
+    width: 40px;
+}
+
+div.content div.link div.images div.commodityImage {
+    width: 400px;
+    margin-right: 20px;
+}
+
+div.enlargeImage {
+    position: absolute;
+    left: 0;
+    top: 500px;
+    z-index: 10;
+    display: none;
+}
+
+div.enlargeImage div.normal, #enlargeImage div.detail {
+    margin: 0;
+    padding: 0;
+    border: 2px solid #2B2C30;
+}
+
+div.parametersEffect {
+    padding: 20px 0 20px 50px;
+    min-height: 100px;
+    width: 680px;
+    background-color: #F6F6F1;
+    border-radius: 5px;
+}
+
+div.parametersEffect td {
+    padding: 0;
+    color: #666666;
+    font-size: 10pt;
+    height: 27px;
+}
+
+div.parametersEffect td > div {
+    padding: 0;
+    margin: 0;
+    height: 20px;
+    width: 200px;
+    overflow: hidden;
+}

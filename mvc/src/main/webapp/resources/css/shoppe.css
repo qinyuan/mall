@@ -1,0 +1,98 @@
+div.poster {
+    position: relative;
+    width: 100%;
+    background: #ffffff no-repeat center;
+}
+
+div.content > div.copy {
+    position: absolute;
+    width: 950px;
+    display: none;
+    background-color: #ffffff;
+    z-index: 8;
+}
+
+div.content div.logo {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    min-height: 70px;
+    overflow: hidden;
+}
+
+div.content div.logo div.logoImage, div.content div.logo div.slogan {
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+div.content div.logo div.logoImage {
+    padding-left: 25px;
+    float: left;
+}
+
+/*div.content div.logo div.logoImage img {
+    width: 70px;
+    height: 70px;
+}*/
+
+div.content div.logo div.slogan {
+    padding-left: 20px;
+    float: left;
+    font-size: 10pt;
+    line-height: 24px;
+    width: 290px;
+}
+
+div.content div.logo div.links {
+    position: absolute;
+    padding: 20px 60px;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 510px;
+    line-height: 25px;
+}
+
+div.content div.logo div.links > div.back {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+
+div.content div.logo div.links > div.top, div.content div.logo div.links > div.bottom {
+    width: 100%;
+    height: 10px;
+    background: url("images/shoppe/linksHorizontalBack.png") repeat-x;
+}
+
+div.content div.logo div.links > div.left, div.content div.logo div.links > div.right {
+    width: 10px;
+    height: 100%;
+    background: url("images/shoppe/linksVerticalBack.png") repeat-y;
+}
+
+div.content div.logo div.links > div.top, div.content div.logo div.links > div.left {
+    left: 0;
+    top: 0;
+}
+
+div.content div.logo div.links > div.bottom {
+    left: 0;
+    bottom: 0;
+}
+
+div.content div.logo div.links > div.right {
+    right: -2px;
+    top: 0;
+}
+
+div.content div.logo div.links > div.link {
+    float: left;
+    margin: 0 5px;
+    width: 120px;
+}
+
+div.content div.logo div.links a {
+    font-size: 9pt;
+    color: #3377aa;
+}
