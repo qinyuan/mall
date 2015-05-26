@@ -8,4 +8,4 @@ mkdir $package
 mv target/lib $package
 mv target/classes $package
 cp src/main/bin/* $package/classes
-mv $package/classes/run.sh $package
+mv $package/classes/start $package

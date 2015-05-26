@@ -16,8 +16,8 @@
         <property name="startHour" value="${startHourt}"/>
         <property name="endHour" value="${endHourt}"/>
     </bean>
-<!--
-    <bean class="CommodityCrawler" init-method="init">
+
+    <bean class="com.qinyuan15.mall.crawler.CommodityCrawler" init-method="init">
         <property name="interval" value="1"/>
         <property name="threadSize" value="30"/>
         <property name="httpClientPool" ref="httpClientPool"/>
@@ -26,5 +26,5 @@
         <property name="debugMode" value="${debug}"/>
         <property name="expireCommodityRecorder" ref="expireCommodityRecorder"/>
         <property name="crawlTimeValidator" ref="crawlTimeValidator"/>
-    </bean>-->
+    </bean>
 </beans>
