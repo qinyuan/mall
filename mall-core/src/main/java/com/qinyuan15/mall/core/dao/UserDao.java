@@ -1,10 +1,10 @@
 package com.qinyuan15.mall.core.dao;
 
+import com.qinyuan15.utils.hibernate.HibernateListBuilder;
 import com.qinyuan15.utils.hibernate.HibernateUtils;
 import com.qinyuan15.utils.security.IUserDao;
 import com.qinyuan15.utils.security.SecuritySearcher;
 import com.qinyuan15.utils.security.User;
-import org.hibernate.Session;
 
 import java.util.List;
 
@@ -18,12 +18,9 @@ public class UserDao implements IUserDao {
     }
 
     public User getInstanceByName(String username) {
-        Session session = HibernateUtils.getSession();
-        List list = session.createQuery("FROM User WHERE username=:username")
-                .setString("username", username).list();
-        User user = list.size() == 0 ? null : (User) list.get(0);
-        HibernateUtils.commit(session);
-        return user;
+        return new HibernateListBuilder()
+                .addFilter("username=:username").addArgument("username", username)
+                .getFirstItem(User.class);
     }
 
     public List<User> getInstances() {

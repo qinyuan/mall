@@ -12,7 +12,7 @@ public class UserDaoTest {
 
     @Test
     public void testGetInstanceByName() throws Exception {
-        User user = dao.getInstanceByName("admin");
+        User user = dao.getInstanceByName("admin2");
         if (user != null) {
             System.out.println(user.getUsername());
             System.out.println(user.getPassword());

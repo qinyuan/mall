@@ -1,11 +1,11 @@
 package com.qinyuan15.mall.crawler;
 
 import com.qinyuan15.mall.core.commodity.CommodityPool;
-import com.qinyuan15.mall.crawler.parameters.CommodityParametersCrawler;
-import com.qinyuan15.mall.crawler.html.CommodityPageParserBuilder;
-import com.qinyuan15.mall.crawler.http.SlowProxiesTester;
 import com.qinyuan15.mall.core.dao.CommodityDao;
 import com.qinyuan15.mall.core.dao.SimpleCommodity;
+import com.qinyuan15.mall.crawler.html.CommodityPageParserBuilder;
+import com.qinyuan15.mall.crawler.http.SlowProxiesTester;
+import com.qinyuan15.mall.crawler.parameters.CommodityParametersCrawler;
 import com.qinyuan15.utils.DateUtils;
 import com.qinyuan15.utils.concurrent.StoptableThread;
 import com.qinyuan15.utils.concurrent.ThreadUtils;
@@ -13,7 +13,7 @@ import com.qinyuan15.utils.http.HttpClientPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.Override;import java.lang.String;import java.lang.Thread;import java.lang.Throwable;import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,10 +25,8 @@ public class CommodityCrawler {
     private final static Logger LOGGER = LoggerFactory.getLogger(CommodityCrawler.class);
     public final static int DEFAULT_THREAD_SIZE = 10;
     public final static int DEFAULT_INTERVAL = 5;
-    //private final static int IDLE_INTERVAL = 120;
 
     private int threadSize = DEFAULT_THREAD_SIZE;
-    //private int busyInterval = DEFAULT_INTERVAL;
     private int interval = DEFAULT_INTERVAL;
     private HttpClientPool httpClientPool;
     private CommodityPool commodityPool;
@@ -41,8 +39,6 @@ public class CommodityCrawler {
 
     public void init() {
         new ModeSwitchThread().start();
-        //initBusyThreads();
-        //initIdleThreads();
     }
 
     private void startThreads(List<StoptableThread> threads) {
@@ -77,12 +73,16 @@ public class CommodityCrawler {
 
     private synchronized void initIdleThreads() {
         stopAndClearThreads(idleThreads);
+        int secondsInOneHour = 3600;
         idleThreads.add(new CommodityPriceSalesValidator(
                 httpClientPool, commodityPageParserBuilder, crawlTimeValidator));
-        idleThreads.add(new CommodityParametersCrawler(httpClientPool));
+        idleThreads.add(new CommodityParametersCrawler(httpClientPool)
+                .setMaxHeartbeatInterval(secondsInOneHour));
         idleThreads.add(new CommodityActiveValidator(
-                httpClientPool, commodityPageParserBuilder));
-        idleThreads.add(new SlowProxiesTester("www.etao.com"));
+                httpClientPool, commodityPageParserBuilder)
+                .setMaxHeartbeatInterval(secondsInOneHour));
+        idleThreads.add(new SlowProxiesTester("www.etao.com")
+                .setMaxHeartbeatInterval(secondsInOneHour));
         startThreads(idleThreads);
     }
 
@@ -117,8 +117,16 @@ public class CommodityCrawler {
     }
 
     public void setInterval(int interval) {
-        //this.busyInterval = interval;
         this.interval = interval;
+    }
+
+    private boolean hasBlockedIdleThread() {
+        for (StoptableThread thread : idleThreads) {
+            if (thread.isBlocked()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private class ModeSwitchThread extends Thread {
@@ -135,35 +143,20 @@ public class CommodityCrawler {
                     if (!busyMode) {
                         stopAndClearThreads(idleThreads);
                         initBusyThreads();
+                        LOGGER.info("switch to busy mode");
                     }
                     busyMode = true;
                 } else {
                     if (busyMode) {
                         stopAndClearThreads(busyThreads);
                         initIdleThreads();
+                        LOGGER.info("switch to idle mode");
+                    } else if (hasBlockedIdleThread()) {
+                        initIdleThreads();
+                        LOGGER.info("init idle threads because of blocking");
                     }
                     busyMode = false;
                 }
-                /*
-                long unCrawlCount = new CommodityDao().getUnCrawlCount();
-                if (unCrawlCount > 0 && crawlTimeValidator.inCrawlTime()) {
-                    interval = busyInterval;
-                    for (SuspendableThread thread : idleThreads) {
-                        thread.setRunning(false);
-                    }
-                    LOGGER.info("switch to busy mode");
-                } else {
-                    interval = IDLE_INTERVAL;
-                    for (SuspendableThread thread : idleThreads) {
-                        if (thread instanceof CommodityPriceSalesValidator) {
-                            thread.setRunning(crawlTimeValidator.inCrawlTime());
-                        } else {
-                            thread.setRunning(true);
-                        }
-                    }
-                    LOGGER.info("switch to idle mode");
-                }
-                */
             }
         }
     }
@@ -213,51 +206,5 @@ public class CommodityCrawler {
                         commodityInfo, e);
             }
         }
-
-        /*
-        @Override
-        public void run() {
-            if (commodityPool == null) {
-                LOGGER.info("commodity pool is null, no commodity history to grub.");
-                return;
-            }
-
-            // sleep 1 minutes before start
-            ThreadUtils.sleep(60);
-
-            while (true) {
-                ThreadUtils.sleep(interval);
-
-                SimpleCommodity commodity = null;
-                try {
-                    commodity = commodityPool.next();
-                    if (commodity == null) {
-                        LOGGER.info("no commodity to crawl.");
-                        continue;
-                    }
-
-                    if (debugMode) {
-                        LOGGER.info("deal with commodity {}", commodity.getName());
-                        continue;
-                    }
-
-                    if (crawlTimeValidator.inCrawlTime()) {
-                        if (DateUtils.now().toString().equals(commodity.getCrawlDate())) {
-                            LOGGER.info("Today's price of commodity {} already save, just skip it",
-                                    commodity.getName());
-                        } else {
-                            this.singleCommodityCrawler.save(commodity);
-                        }
-                    }
-                    new CommodityDao().updateInLowPrice(commodity.getId());
-                } catch (Throwable e) {
-                    String commodityInfo = commodity == null ?
-                            null : commodity.getName() + "(" + commodity.getUrl() + ")";
-                    LOGGER.error("fail to grub commodity '{}': {}",
-                            commodityInfo, e);
-                }
-            }
-        }
-        */
     }
 }

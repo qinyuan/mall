@@ -54,10 +54,10 @@
     <!-- proxy download job end -->
 
     <task:scheduled-tasks>
-        <!-- run in 0 o'clock of each day -->
-        <task:scheduled ref="proxyTestJob" method="run" cron="0 0 0 * * ?"/>
+        <!-- run in 3 o'clock of each day -->
+        <task:scheduled ref="proxyTestJob" method="run" cron="0 0 3 * * ?"/>
         <!-- run in 2 o'clock of each day -->
-        <!--<task:scheduled ref="proxyDowloadJob" method="save" cron="0 0 2 * * ?"/>-->
+        <task:scheduled ref="proxyDowloadJob" method="save" cron="0 0 2 * * ?"/>
         <task:scheduled ref="proxyDowloadJob" method="save" cron="0 40 * * * ?"/>
     </task:scheduled-tasks>
 
