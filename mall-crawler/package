@@ -1,0 +1,11 @@
+#!/bin/bash
+
+mvn clean
+mvn package -Dmaven.test.skip=true
+
+package=target/mall-crawler
+mkdir $package
+mv target/lib $package
+mv target/classes $package
+cp src/main/bin/* $package/classes
+mv $package/classes/run.sh $package
