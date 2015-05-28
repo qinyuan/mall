@@ -107,7 +107,7 @@ public class CommodityPriceSalesValidator extends StoptableThread {
     private boolean isPriceIncorrect(Commodity commodity, Map<Date, Double> priceHistory) {
         if (priceHistory == null) {
             LOGGER.warn("fail to crawl price history of {}({})", commodity.name, commodity.url);
-            return true;
+            return false;
         }
 
         for (Map.Entry<Date, Double> price : priceHistory.entrySet()) {
@@ -117,11 +117,11 @@ public class CommodityPriceSalesValidator extends StoptableThread {
                         Math.abs(realPrice - commodity.price) >= 1.0) {
                     LOGGER.warn("price of '{}' is incorrect, the save one is {} but real one is {}",
                             commodity.name, commodity.price, realPrice);
-                    return false;
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
     private void validateSales(Commodity commodity, Integer realSales) {

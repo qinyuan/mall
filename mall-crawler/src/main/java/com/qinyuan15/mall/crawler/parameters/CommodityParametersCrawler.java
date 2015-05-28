@@ -64,6 +64,7 @@ public class CommodityParametersCrawler extends StoptableThread {
             reInitValidator = false;
         } else {
             ThreadUtils.sleep(DEFAULT_INTERVAL);
+            reInitValidator = true;
         }
     }
 }

@@ -2,11 +2,9 @@ package com.qinyuan15.mall.crawler;
 
 import com.qinyuan15.mall.core.commodity.CommodityPool;
 import com.qinyuan15.mall.core.dao.CommodityDao;
-import com.qinyuan15.mall.core.dao.SimpleCommodity;
 import com.qinyuan15.mall.crawler.html.CommodityPageParserBuilder;
 import com.qinyuan15.mall.crawler.http.SlowProxiesTester;
 import com.qinyuan15.mall.crawler.parameters.CommodityParametersCrawler;
-import com.qinyuan15.utils.DateUtils;
 import com.qinyuan15.utils.concurrent.StoptableThread;
 import com.qinyuan15.utils.concurrent.ThreadUtils;
 import com.qinyuan15.utils.http.HttpClientPool;
@@ -24,10 +22,8 @@ public class CommodityCrawler {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CommodityCrawler.class);
     public final static int DEFAULT_THREAD_SIZE = 10;
-    public final static int DEFAULT_INTERVAL = 5;
 
     private int threadSize = DEFAULT_THREAD_SIZE;
-    private int interval = DEFAULT_INTERVAL;
     private HttpClientPool httpClientPool;
     private CommodityPool commodityPool;
     private CommodityPageParserBuilder commodityPageParserBuilder;
@@ -65,7 +61,9 @@ public class CommodityCrawler {
     private void initBusyThreads() {
         stopAndClearThreads(busyThreads);
         for (int i = 0; i < this.threadSize; i++) {
-            busyThreads.add(new CrawlThread());
+            busyThreads.add(new CommodityCrawlThread(commodityPool, httpClientPool,
+                    commodityPageParserBuilder, expireCommodityRecorder, crawlTimeValidator)
+                    .setDebugMode(debugMode));
             LOGGER.info("create PriceHistory crawl thread " + i);
         }
         startThreads(busyThreads);
@@ -81,8 +79,7 @@ public class CommodityCrawler {
         idleThreads.add(new CommodityActiveValidator(
                 httpClientPool, commodityPageParserBuilder)
                 .setMaxHeartbeatInterval(secondsInOneHour));
-        idleThreads.add(new SlowProxiesTester("www.etao.com")
-                .setMaxHeartbeatInterval(secondsInOneHour));
+        idleThreads.add(new SlowProxiesTester("www.etao.com"));
         startThreads(idleThreads);
     }
 
@@ -116,9 +113,9 @@ public class CommodityCrawler {
         this.threadSize = threadSize;
     }
 
-    public void setInterval(int interval) {
+    /*public void setInterval(int interval) {
         this.interval = interval;
-    }
+    }*/
 
     private boolean hasBlockedIdleThread() {
         for (StoptableThread thread : idleThreads) {
@@ -157,53 +154,6 @@ public class CommodityCrawler {
                     }
                     busyMode = false;
                 }
-            }
-        }
-    }
-
-    private class CrawlThread extends StoptableThread {
-        private SingleCommodityCrawler singleCommodityCrawler;
-
-        public CrawlThread() {
-            this.singleCommodityCrawler = new SingleCommodityCrawler(
-                    httpClientPool, commodityPageParserBuilder, expireCommodityRecorder);
-        }
-
-        @Override
-        protected void jobToRun() {
-            if (commodityPool == null) {
-                LOGGER.info("commodity pool is null, no commodity history to grub.");
-                return;
-            }
-
-            ThreadUtils.sleep(interval);
-            SimpleCommodity commodity = null;
-            try {
-                commodity = commodityPool.next();
-                if (commodity == null) {
-                    LOGGER.info("no commodity to crawl.");
-                    return;
-                }
-
-                if (debugMode) {
-                    LOGGER.info("deal with commodity {}", commodity.getName());
-                    return;
-                }
-
-                if (crawlTimeValidator.inCrawlTime()) {
-                    if (DateUtils.now().toString().equals(commodity.getCrawlDate())) {
-                        LOGGER.info("Today's price of commodity {} already save, just skip it",
-                                commodity.getName());
-                    } else {
-                        this.singleCommodityCrawler.save(commodity);
-                    }
-                }
-                new CommodityDao().updateInLowPrice(commodity.getId());
-            } catch (Throwable e) {
-                String commodityInfo = commodity == null ?
-                        null : commodity.getName() + "(" + commodity.getUrl() + ")";
-                LOGGER.error("fail to grub commodity '{}': {}",
-                        commodityInfo, e);
             }
         }
     }
