@@ -60,7 +60,6 @@ public class DatabaseProxyPool implements ProxyPool {
         if (proxies == null || pointer >= proxies.size()) {
             this.reload();
         }
-        //return proxies.get(pointer++);
         pointer++;
 
         if (this.proxies.size() == 0) {
