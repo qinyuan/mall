@@ -1,4 +1,4 @@
 #!/bin/bash
 
 mvn clean
-mvn install -Dmaven.test.skip=true
+mvn source:jar install -Dmaven.test.skip=true

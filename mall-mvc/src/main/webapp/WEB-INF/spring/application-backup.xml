@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/task
+           http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <bean id="mysqldumpJob" class="com.qinyuan15.utils.hibernate.HibernateMySQLDump">
+        <constructor-arg value="/home/qinyuan/backup"/>
+        <property name="password" value="qinyuan"/>
+    </bean>
+
+    <task:scheduled-tasks>
+        <!-- run in 19 o'clock of each day -->
+        <task:scheduled ref="mysqldumpJob" method="run" cron="0 0 19 * * ?"/>
+    </task:scheduled-tasks>
+
+</beans>
