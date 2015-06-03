@@ -1,19 +1,23 @@
 package com.qinyuan15.mall.crawler;
 
-import com.qinyuan15.mall.crawler.html.CommodityPageParser;
-import com.qinyuan15.mall.crawler.html.CommodityPageParserBuilder;
-import com.qinyuan15.mall.crawler.html.CommodityPageValidator;
 import com.qinyuan15.mall.core.dao.CommodityCrawlLogDao;
 import com.qinyuan15.mall.core.dao.CommodityDao;
 import com.qinyuan15.mall.core.dao.CommodityPriceDao;
 import com.qinyuan15.mall.core.dao.SimpleCommodity;
+import com.qinyuan15.mall.crawler.html.CommodityPageParser;
+import com.qinyuan15.mall.crawler.html.CommodityPageParserBuilder;
+import com.qinyuan15.mall.crawler.html.CommodityPageValidator;
 import com.qinyuan15.utils.http.HttpClient;
 import com.qinyuan15.utils.http.HttpClientPool;
 import com.qinyuan15.utils.http.HttpExceptionUtils;
+import com.qinyuan15.utils.http.IProxy;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.Double;import java.lang.Integer;import java.lang.String;import java.lang.Throwable;import java.sql.Date;
+import java.io.File;
+import java.sql.Date;
 import java.util.Map;
 
 /**
@@ -57,12 +61,27 @@ class SingleCommodityCrawler {
                 return;
             }
 
+            IProxy proxy = client.getProxy();
             if (!new CommodityPageValidator().validate(parser, url)) {
-                LOGGER.info("response of requesting to {} with proxy {}:\n{}",
-                        url, client.getProxy(), html);
+                LOGGER.info("invalid response of requesting to {} with proxy {}:\n{}",
+                        url, proxy, html);
+
                 crawlLogDao.logFail(commodityId, "网页内容有误");
-                client.feedbackRejection();
+                if (CommodityPageValidator.getFailTimes(proxy) >= 5) {
+                    client.feedbackRejection();
+                    LOGGER.warn("proxy {} reach to fail times", proxy);
+
+                    // log invalid html
+                    if (!new File("/tmp/invalid").isDirectory()) {
+                        new File("/tmp/invalid").mkdirs();
+                    }
+                    File logFile = new File("/tmp/invalid/" + RandomUtils.nextInt(0, 100) + System.currentTimeMillis()
+                            + ".html");
+                    FileUtils.write(logFile, html);
+                }
                 return;
+            } else {
+                CommodityPageValidator.resetFailTimes(proxy);
             }
 
             updateSales(parser, commodity);

@@ -1,7 +1,11 @@
 package com.qinyuan15.mall.crawler.html;
 
+import com.qinyuan15.utils.http.IProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Class to validate commodity page
@@ -9,6 +13,25 @@ import org.slf4j.LoggerFactory;
  */
 public class CommodityPageValidator {
     private final static Logger LOGGER = LoggerFactory.getLogger(CommodityPageParser.class);
+
+    private final static Map<String, Integer> failRecordMap = new HashMap<>();
+
+    public static synchronized int getFailTimes(IProxy proxy) {
+        String url = proxy.getHost() + ":" + proxy.getPort();
+        Integer failTimes = failRecordMap.get(url);
+        if (failTimes == null) {
+            failTimes = 0;
+        }
+
+        failTimes++;
+        failRecordMap.put(url, failTimes);
+        return failTimes;
+    }
+
+    public static synchronized void resetFailTimes(IProxy proxy) {
+        String url = proxy.getHost() + ":" + proxy.getPort();
+        failRecordMap.remove(url);
+    }
 
     /**
      * validate if current page is correct

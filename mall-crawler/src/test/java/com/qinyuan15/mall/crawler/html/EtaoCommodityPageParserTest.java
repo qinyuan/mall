@@ -1,5 +1,6 @@
 package com.qinyuan15.mall.crawler.html;
 
+import com.mchange.v2.c3p0.util.TestUtils;
 import com.qinyuan15.utils.DateUtils;
 import com.qinyuan15.utils.test.TestFileUtils;
 import org.junit.Before;
@@ -22,6 +23,7 @@ public class EtaoCommodityPageParserTest {
 
     @Before
     public void setUp() throws Exception {
+        System.out.println(TestFileUtils.getAbsolutePath("etao.html"));
         parser = new EtaoCommodityPageParser(TestFileUtils.read("etao.html"), null);
     }
 
@@ -118,6 +120,6 @@ public class EtaoCommodityPageParserTest {
 
     @Test
     public void testGetUrl() throws Exception {
-        System.out.println(parser.getUrl());
+        assertThat(parser.getUrl()).isEqualTo("http://s.etao.com/detail/40780735321.html");
     }
 }

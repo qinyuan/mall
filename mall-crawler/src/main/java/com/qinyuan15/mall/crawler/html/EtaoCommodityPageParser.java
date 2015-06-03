@@ -40,6 +40,13 @@ public class EtaoCommodityPageParser extends AbstractCommodityPageParser {
                 return element.attr("href");
             }
         }
+
+        for (Element element : htmlParser.getElements("div", "product-info")) {
+            if (element.hasAttr("nid")) {
+                return "http://s.etao.com/detail/" + element.attr("nid") + ".html";
+            }
+        }
+
         return null;
     }
 
