@@ -9,7 +9,6 @@ import java.util.Map;
  * Created by qinyuan on 15-1-2.
  */
 public interface CommodityPageParser {
-    //void setHTML(String html);
     String getName();
 
     /**
@@ -27,5 +26,6 @@ public interface CommodityPageParser {
     Integer getSales();
 
     boolean isExpire();
-    //CommodityPageParser copy();
+
+    boolean isRejected();
 }

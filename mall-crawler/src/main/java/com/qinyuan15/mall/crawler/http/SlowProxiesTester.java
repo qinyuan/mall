@@ -17,7 +17,7 @@ public class SlowProxiesTester extends StoptableThread {
     private final static int INTERVAL = 1800;
 
     public SlowProxiesTester(String testUrl) {
-        proxyTester = new ProxyTester(testUrl, new DatabaseProxySpeedRecorder());
+        proxyTester = new ProxyTester(testUrl);
     }
 
     @Override

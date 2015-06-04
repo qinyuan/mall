@@ -74,7 +74,7 @@ class TaobaoParametersCrawler {
                         return true;
                     }
                 } else {
-                    httpClient.feedbackRejection();
+                    httpClient.feedbackRejection(url);
                 }
             } catch (Exception e) {
                 LOGGER.warn("fail to parse parameters of url {}, info: {}", url, e);

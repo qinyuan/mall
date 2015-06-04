@@ -9,7 +9,7 @@ import org.junit.Test;
 public class ProxiesTesterTest {
     @Test
     public void testRun() throws Exception {
-        ProxiesTester tester = new ProxiesTester(new DatabaseProxySpeedRecorder());
+        ProxiesTester tester = new ProxiesTester();
         //tester.run();
     }
 }

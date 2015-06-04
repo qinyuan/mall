@@ -8,11 +8,7 @@
            http://www.springframework.org/schema/task/spring-task.xsd">
 
     <!-- proxy test job start -->
-    <bean id="proxyTestJob" class="com.qinyuan15.mall.crawler.http.ProxiesTester">
-        <constructor-arg>
-            <bean class="com.qinyuan15.mall.crawler.http.DatabaseProxySpeedRecorder"/>
-        </constructor-arg>
-    </bean>
+    <bean id="proxyTestJob" class="com.qinyuan15.mall.crawler.http.ProxiesTester"/>
     <!-- proxy test job end -->
 
     <!-- proxy download job start -->

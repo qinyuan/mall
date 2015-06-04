@@ -12,7 +12,7 @@
     <bean id="proxySpeedRecorder" class="com.qinyuan15.mall.crawler.http.DatabaseProxySpeedRecorder"/>
     <bean id="httpClientPool" class="com.qinyuan15.utils.http.HttpClientPool">
         <property name="proxyPool" ref="proxyPool"/>
-        <property name="proxySpeedRecorder" ref="proxySpeedRecorder"/>
+        <property name="proxyRecorder" ref="proxySpeedRecorder"/>
     </bean>
     <bean id="commodityPool" class="com.qinyuan15.mall.core.commodity.DatabaseCommodityPool"/>
     <bean id="pageParserBuilder" class="com.qinyuan15.mall.crawler.html.CommodityPageParserBuilder">

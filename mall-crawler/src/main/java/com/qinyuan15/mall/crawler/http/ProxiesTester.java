@@ -3,7 +3,6 @@ package com.qinyuan15.mall.crawler.http;
 import com.qinyuan15.utils.concurrent.ThreadUtils;
 import com.qinyuan15.utils.http.Proxy;
 import com.qinyuan15.utils.http.ProxyDao;
-import com.qinyuan15.utils.http.ProxySpeedRecorder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,11 +22,6 @@ public class ProxiesTester {
     private String testPage = DEFAULT_TEST_PAGE;
     private int threadSize = DEFAULT_THREAD_SIZE;
     private List<Proxy> proxies;
-    private final ProxySpeedRecorder proxySpeedRecorder;
-
-    public ProxiesTester(ProxySpeedRecorder proxySpeedRecorder) {
-        this.proxySpeedRecorder = proxySpeedRecorder;
-    }
 
     public void setTestPage(String testPage) {
         this.testPage = testPage;
@@ -77,7 +71,7 @@ public class ProxiesTester {
                     LOGGER.info("proxy test thread {} complete.", this.index);
                     break;
                 }
-                new ProxyTester(testPage, proxySpeedRecorder).test(proxy);
+                new ProxyTester(testPage).test(proxy);
             }
         }
     }

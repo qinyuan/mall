@@ -60,13 +60,13 @@ public class EtaoCommodityDetailImagesParser {
                 }
                 String dataUrlContent = httpClient.getContent(dataUrl);
                 if (!StringUtils.hasText(dataUrlContent)) {
-                    httpClient.feedbackRejection();
+                    httpClient.feedbackRejection(dataUrl);
                     return false;
                 }
 
                 dataUrlContent = dataUrlContent.trim();
                 if (!dataUrlContent.contains("var desc")) {
-                    httpClient.feedbackRejection();
+                    httpClient.feedbackRejection(dataUrl);
                     return false;
                 }
 

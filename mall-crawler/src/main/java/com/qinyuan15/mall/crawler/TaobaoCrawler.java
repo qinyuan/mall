@@ -47,7 +47,7 @@ public class TaobaoCrawler {
                         return parameters;
                     }
                 } else {
-                    client.feedbackRejection();
+                    client.feedbackRejection(this.url);
                 }
             }
             return null;

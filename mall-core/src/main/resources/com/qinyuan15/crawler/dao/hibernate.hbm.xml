@@ -198,4 +198,13 @@
         <property name="speed"/>
         <property name="speedUpdateTime" column="speed_update_time"/>
     </class>
+    <class name="com.qinyuan15.utils.http.ProxyRejection" table="proxy_rejection">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="proxyId" column="proxy_id"/>
+        <property name="host"/>
+        <property name="url"/>
+        <property name="rejectTime" column="reject_time"/>
+    </class>
 </hibernate-mapping>

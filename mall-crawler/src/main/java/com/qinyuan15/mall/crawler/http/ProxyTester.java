@@ -2,7 +2,7 @@ package com.qinyuan15.mall.crawler.http;
 
 import com.qinyuan15.utils.http.HttpClient;
 import com.qinyuan15.utils.http.Proxy;
-import com.qinyuan15.utils.http.ProxySpeedRecorder;
+import com.qinyuan15.utils.http.ProxyRecorder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,11 +13,10 @@ import org.slf4j.LoggerFactory;
 public class ProxyTester {
     private final static Logger LOGGER = LoggerFactory.getLogger(ProxyTester.class);
     private final String testPage;
-    private final ProxySpeedRecorder proxySpeedRecorder;
+    private final ProxyRecorder proxyRecorder = new DatabaseProxySpeedRecorder();
 
-    public ProxyTester(String testPage, ProxySpeedRecorder proxySpeedRecorder) {
+    public ProxyTester(String testPage) {
         this.testPage = testPage;
-        this.proxySpeedRecorder = proxySpeedRecorder;
     }
 
     public void test(Proxy proxy) {
@@ -35,6 +34,6 @@ public class ProxyTester {
             LOGGER.warn("fail to connect {} with proxy {}: {}",
                     testPage, proxy, e);
         }
-        proxySpeedRecorder.recordSpeed(proxy, speed);
+        proxyRecorder.recordSpeed(proxy, speed);
     }
 }

@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.Map;
 
@@ -62,22 +63,24 @@ class SingleCommodityCrawler {
             }
 
             IProxy proxy = client.getProxy();
+
+            if (parser.isRejected()) {
+                LOGGER.warn("proxy {} is rejected by url {}", proxy, url);
+                client.feedbackRejection(url);
+                crawlLogDao.logFail(commodityId, "IP被网站拦截");
+                logHTML("reject", html);
+            }
+
             if (!new CommodityPageValidator().validate(parser, url)) {
                 LOGGER.info("invalid response of requesting to {} with proxy {}:\n{}",
                         url, proxy, html);
 
                 crawlLogDao.logFail(commodityId, "网页内容有误");
-                if (CommodityPageValidator.getFailTimes(proxy) >= 5) {
-                    client.feedbackRejection();
+                if (CommodityPageValidator.getFailTimes(proxy) >= 3) {
+                    CommodityPageValidator.resetFailTimes(proxy);
+                    client.feedbackError();
                     LOGGER.warn("proxy {} reach to fail times", proxy);
-
-                    // log invalid html
-                    if (!new File("/tmp/invalid").isDirectory()) {
-                        new File("/tmp/invalid").mkdirs();
-                    }
-                    File logFile = new File("/tmp/invalid/" + RandomUtils.nextInt(0, 100) + System.currentTimeMillis()
-                            + ".html");
-                    FileUtils.write(logFile, html);
+                    logHTML("unknown", html);
                 }
                 return;
             } else {
@@ -91,7 +94,8 @@ class SingleCommodityCrawler {
             } else {
                 LOGGER.info("can not get priceHistory from url {}, html contents: {}",
                         url, html);
-                client.feedbackRejection();
+                client.feedbackRejection(url);
+                logHTML("noPrice", html);
             }
         } catch (Throwable e) {
             LOGGER.error("fail to fetch price history of {}: {}", url, e);
@@ -101,6 +105,17 @@ class SingleCommodityCrawler {
                 crawlLogDao.logFail(commodityId, "未知错误");
             }
         }
+    }
+
+    private void logHTML(String fileNamePrefix, String html) throws IOException {
+        // log invalid html
+        if (!new File("/tmp/invalid").isDirectory()) {
+            new File("/tmp/invalid").mkdirs();
+        }
+        String fileName = "/tmp/invalid/" + fileNamePrefix + System.currentTimeMillis()
+                + "_" + RandomUtils.nextInt(0, 1000) + ".html";
+        File logFile = new File(fileName);
+        FileUtils.write(logFile, html);
     }
 
     private boolean updatePriceHistory(CommodityPageParser commodityPageParser, int commodityId) {

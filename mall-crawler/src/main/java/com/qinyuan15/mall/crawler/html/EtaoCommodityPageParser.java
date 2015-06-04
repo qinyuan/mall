@@ -32,6 +32,19 @@ public class EtaoCommodityPageParser extends AbstractCommodityPageParser {
         this.httpClientPool = httpClientPool;
     }
 
+    @Override
+    public boolean isRejected() {
+        HtmlParser htmlParser = new HtmlParser(this.html);
+
+        Elements elements = htmlParser.getElements("div", "login-con");
+        if (elements != null && elements.size() > 0) {
+            return true;
+        }
+
+        elements = htmlParser.getElements("div", "login-tb");
+        return elements != null && elements.size() > 0;
+    }
+
     public String getUrl() {
         HtmlParser htmlParser = new HtmlParser(this.html);
         for (Element element : htmlParser.getElements("link")) {
