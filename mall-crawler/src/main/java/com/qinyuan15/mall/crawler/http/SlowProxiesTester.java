@@ -12,12 +12,12 @@ import java.util.List;
  * Created by qinyuan on 15-5-16.
  */
 public class SlowProxiesTester extends StoptableThread {
-    //private final static int TEST_SIZE = 200;
     private final ProxyTester proxyTester;
     private final static int INTERVAL = 1800;
+    private final static String TEST_URL = "www.etao.com";
 
-    public SlowProxiesTester(String testUrl) {
-        proxyTester = new ProxyTester(testUrl);
+    public SlowProxiesTester() {
+        proxyTester = new ProxyTester(TEST_URL, new EtaoPageValidator());
     }
 
     @Override

@@ -1,0 +1,27 @@
+col.index {
+    width: 40px;
+}
+
+col.proxy {
+    width: 210px;
+}
+
+col.speed {
+    width: 100px;
+}
+
+col.url{
+    width: 350px;
+}
+
+col.time {
+    width: 140px;
+}
+
+div.proxyCount {
+    padding: 10px 0;
+}
+
+div.proxyCount span {
+    padding-right: 50px;
+}

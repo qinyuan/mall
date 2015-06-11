@@ -26,7 +26,7 @@
         <property name="reloadInterval" value="60"/>
     </bean>
 
-    <bean id="proxySpeedRecorder" class="com.qinyuan15.mall.crawler.http.DatabaseProxySpeedRecorder"/>
+    <bean id="proxySpeedRecorder" class="com.qinyuan15.mall.crawler.http.DatabaseProxyRecorder"/>
     <bean id="httpClientPool" class="com.qinyuan15.utils.http.HttpClientPool">
         <property name="proxyPool" ref="proxyPool"/>
         <property name="proxySpeedRecorder" ref="proxySpeedRecorder"/>

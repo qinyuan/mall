@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo '-------------------------- qinyuan-utils -----------------------'
+cd ../qinyuan/utils
+./install
+echo 
+echo 
+
+echo '-------------------------- mall-core -----------------------'
+cd ../../mall/mall-core
+./install
+echo 
+echo 
+
+echo '-------------------------- mall-crawler -----------------------'
+cd ../mall-crawler
+./install
+echo 
+echo 
+
+echo '-------------------------- mall-mvc -----------------------'
+cd ../mall-mvc
+./package

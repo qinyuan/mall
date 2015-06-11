@@ -13,11 +13,11 @@ import java.util.List;
  * Created by qinyuan on 15-1-2.
  */
 public class ProxiesTester {
-
     private final static Logger LOGGER = LoggerFactory.getLogger(ProxiesTester.class);
 
     public final static String DEFAULT_TEST_PAGE = "www.baidu.com";
     public final static int DEFAULT_THREAD_SIZE = 15;
+    private final static PageValidator baiduValidator = new BaiduPageValidator();
 
     private String testPage = DEFAULT_TEST_PAGE;
     private int threadSize = DEFAULT_THREAD_SIZE;
@@ -71,7 +71,7 @@ public class ProxiesTester {
                     LOGGER.info("proxy test thread {} complete.", this.index);
                     break;
                 }
-                new ProxyTester(testPage).test(proxy);
+                new ProxyTester(testPage, baiduValidator).test(proxy);
             }
         }
     }

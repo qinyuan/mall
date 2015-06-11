@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
  * Record proxy speed to database
  * Created by qinyuan on 15-2-23.
  */
-public class DatabaseProxySpeedRecorder implements ProxyRecorder {
-    private final static Logger LOGGER = LoggerFactory.getLogger(DatabaseProxySpeedRecorder.class);
+public class DatabaseProxyRecorder implements ProxyRecorder {
+    private final static Logger LOGGER = LoggerFactory.getLogger(DatabaseProxyRecorder.class);
 
     @Override
     public void recordSpeed(IProxy proxy, int speed) {
@@ -41,6 +41,7 @@ public class DatabaseProxySpeedRecorder implements ProxyRecorder {
         proxyRejection.setProxyId(proxy.getId());
         proxyRejection.setRejectTime(DateUtils.nowString());
         proxyRejection.setUrl(url);
+        proxyRejection.setSpeed(proxy.getSpeed());
 
         HibernateUtils.save(proxyRejection);
     }

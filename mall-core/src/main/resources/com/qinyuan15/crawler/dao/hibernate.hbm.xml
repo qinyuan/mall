@@ -206,5 +206,6 @@
         <property name="host"/>
         <property name="url"/>
         <property name="rejectTime" column="reject_time"/>
+        <property name="speed"/>
     </class>
 </hibernate-mapping>

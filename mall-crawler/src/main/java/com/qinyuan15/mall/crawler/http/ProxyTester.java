@@ -13,24 +13,31 @@ import org.slf4j.LoggerFactory;
 public class ProxyTester {
     private final static Logger LOGGER = LoggerFactory.getLogger(ProxyTester.class);
     private final String testPage;
-    private final ProxyRecorder proxyRecorder = new DatabaseProxySpeedRecorder();
+    private final ProxyRecorder proxyRecorder = new DatabaseProxyRecorder();
+    private final PageValidator pageValidator;
 
     public ProxyTester(String testPage) {
+        this(testPage, null);
+    }
+
+    public ProxyTester(String testPage, PageValidator pageValidator) {
         this.testPage = testPage;
+        this.pageValidator = pageValidator;
     }
 
     public void test(Proxy proxy) {
         HttpClient client = new HttpClient();
         client.setProxy(proxy);
-        int speed;
+        int speed = Integer.MAX_VALUE;
         try {
             LOGGER.info("start testing {} with page {}.", proxy, testPage);
-            client.getContent(testPage);
+            String content = client.getContent(testPage);
             LOGGER.info("connect to {} with proxy {} in {} milliseconds",
                     testPage, proxy, client.getLastConnectTime());
-            speed = client.getLastConnectTime();
+            if (pageValidator == null || pageValidator.validate(content)) {
+                speed = client.getLastConnectTime();
+            }
         } catch (Throwable e) {
-            speed = Integer.MAX_VALUE;
             LOGGER.warn("fail to connect {} with proxy {}: {}",
                     testPage, proxy, e);
         }

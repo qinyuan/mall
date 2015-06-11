@@ -79,7 +79,7 @@ public class CommodityCrawler {
         idleThreads.add(new CommodityActiveValidator(
                 httpClientPool, commodityPageParserBuilder)
                 .setMaxHeartbeatInterval(secondsInOneHour));
-        idleThreads.add(new SlowProxiesTester("www.etao.com"));
+        idleThreads.add(new SlowProxiesTester());
         startThreads(idleThreads);
     }
 
