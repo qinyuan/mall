@@ -31,10 +31,6 @@ public class AdminProxyController extends ImageController {
 
     @RequestMapping("/admin-proxy")
     public String index(ModelMap model) {
-        /*
-        ProxyRejectionDao.Factory factory = ProxyRejectionDao.factory();
-        new PaginationAttributeAdder(factory, request).setRowItemsName("rejections").add();
-        */
         ProxyInfoFactory factory = new ProxyInfoFactory();
         new PaginationAttributeAdder(factory, request).setRowItemsName("rejections").add();
 
