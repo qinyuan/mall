@@ -35,7 +35,9 @@
                 </td>
                 <td class="time">${rejection.rejectTime}</td>
                 <td class="action">
-                    <a href="javascript:void(0)" ng-click="reactivate(${rejection.id})">重新激活</a>
+                    <c:if test="${!rejection.active}">
+                        <a href="javascript:void(0)" ng-click="reactivate(${rejection.id})">重新激活</a>
+                    </c:if>
                 </td>
             </tr>
         </c:forEach>
