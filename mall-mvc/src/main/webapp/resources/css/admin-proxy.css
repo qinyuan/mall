@@ -3,19 +3,23 @@ col.index {
 }
 
 col.proxy {
-    width: 210px;
+    width: 200px;
 }
 
 col.speed {
-    width: 100px;
+    width: 80px;
 }
 
-col.url{
-    width: 350px;
+col.url {
+    width: 310px;
 }
 
 col.time {
     width: 140px;
+}
+
+col.action {
+    width: 70px;
 }
 
 div.proxyCount {
@@ -24,4 +28,8 @@ div.proxyCount {
 
 div.proxyCount span {
     padding-right: 50px;
+}
+
+td.action a{
+    font-size: 10pt;
 }

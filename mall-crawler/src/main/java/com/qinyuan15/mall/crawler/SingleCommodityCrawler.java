@@ -11,12 +11,9 @@ import com.qinyuan15.utils.http.HttpClient;
 import com.qinyuan15.utils.http.HttpClientPool;
 import com.qinyuan15.utils.http.HttpExceptionUtils;
 import com.qinyuan15.utils.http.IProxy;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.Map;
@@ -52,6 +49,7 @@ class SingleCommodityCrawler {
         String url = commodity.getUrl();
         HttpClient client = this.httpClientPool.next();
         Integer commodityId = commodity.getId();
+        final int proxyRetryTimes = 3;
         try {
             LOGGER.info("prepare to save price history of {}", url);
 
@@ -76,7 +74,7 @@ class SingleCommodityCrawler {
                         url, proxy, html);
 
                 crawlLogDao.logFail(commodityId, "网页内容有误");
-                if (CommodityPageValidator.getFailTimes(proxy) >= 3) {
+                if (CommodityPageValidator.getFailTimes(proxy) >= proxyRetryTimes) {
                     CommodityPageValidator.resetFailTimes(proxy);
                     client.feedbackError();
                     LOGGER.warn("proxy {} reach to fail times", proxy);
@@ -94,7 +92,9 @@ class SingleCommodityCrawler {
             } else {
                 LOGGER.info("can not get priceHistory from url {}, html contents: {}",
                         url, html);
-                client.feedbackRejection(url);
+                if (CommodityPageValidator.getFailTimes(proxy) >= proxyRetryTimes) {
+                    client.feedbackRejection(url);
+                }
                 logHTML("noPrice", html);
             }
         } catch (Throwable e) {
@@ -109,13 +109,13 @@ class SingleCommodityCrawler {
 
     private void logHTML(String fileNamePrefix, String html) throws IOException {
         // log invalid html
-        if (!new File("/tmp/invalid").isDirectory()) {
+        /*if (!new File("/tmp/invalid").isDirectory()) {
             new File("/tmp/invalid").mkdirs();
         }
         String fileName = "/tmp/invalid/" + fileNamePrefix + System.currentTimeMillis()
                 + "_" + RandomUtils.nextInt(0, 1000) + ".html";
         File logFile = new File(fileName);
-        FileUtils.write(logFile, html);
+        FileUtils.write(logFile, html);*/
     }
 
     private boolean updatePriceHistory(CommodityPageParser commodityPageParser, int commodityId) {

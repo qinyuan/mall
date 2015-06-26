@@ -12,6 +12,7 @@
             <col class="speed"/>
             <col class="url"/>
             <col class="time"/>
+            <col class="action"/>
         </colgroup>
         <thead>
         <tr>
@@ -19,7 +20,8 @@
             <th>代理</th>
             <th>速度(ms)</th>
             <th>访问链接</th>
-            <th>时间</th>
+            <th>被拦截时间</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +34,9 @@
                     <a href="${rejection.url}" target="_blank">${rejection.url}</a>
                 </td>
                 <td class="time">${rejection.rejectTime}</td>
+                <td class="action">
+                    <a href="javascript:void(0)" ng-click="reactivate(${rejection.id})">重新激活</a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
