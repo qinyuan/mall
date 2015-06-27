@@ -49,9 +49,15 @@ public class DatabaseProxyPool implements ProxyPool {
     }
 
     private void reload() {
-        this.proxies = new ProxyDao().getInstances(size);
+        ProxyDao proxyDao = new ProxyDao();
+        int fastProxyCount = proxyDao.getFastCount();
+        if (fastProxyCount < size) {
+            this.proxies = proxyDao.getInstances(fastProxyCount);
+        } else {
+            this.proxies = proxyDao.getInstances(size);
+        }
         this.pointer = 0;
-        LOGGER.info("Reload {} proxies.", size);
+        LOGGER.info("Reload {} proxies.", this.proxies.size());
     }
 
     private final Random rand = new Random();
