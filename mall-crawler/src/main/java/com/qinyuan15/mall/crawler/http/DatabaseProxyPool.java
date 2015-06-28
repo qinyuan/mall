@@ -52,7 +52,7 @@ public class DatabaseProxyPool implements ProxyPool {
         ProxyDao proxyDao = new ProxyDao();
         int fastProxyCount = proxyDao.getFastCount();
         if (fastProxyCount < size) {
-            this.proxies = proxyDao.getInstances(fastProxyCount);
+            this.proxies = proxyDao.getInstances(fastProxyCount + 10);
         } else {
             this.proxies = proxyDao.getInstances(size);
         }
