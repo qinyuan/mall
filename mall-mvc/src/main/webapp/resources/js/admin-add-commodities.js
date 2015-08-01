@@ -87,15 +87,6 @@
 
         function initCommodities() {
             $scope.commodities = [];
-            /*$scope.commodities.push({
-             showId: 'AAAAAAAAAAAA',
-             url: 'AAAAAAAAAAAAAAAAAAAaaa',
-             buyUrl: 'BBBBBBBBBBBBBB',
-             name: 'AAAAAAAAAAAA',
-             imageUrls: [],
-             detailImageUrls: [],
-             parameters: 'HH'
-             });*/
         }
 
         $scope.runCrawler = function () {
